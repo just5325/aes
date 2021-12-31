@@ -1,0 +1,21 @@
+{
+    "name": "hcg/aes",
+    "description": "AES对称加密解密工具类",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "黄翠刚",
+            "email": "532508307@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hcg\\Aes\\": "src/"
+        }
+    }
+}
