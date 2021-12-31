@@ -9,16 +9,7 @@
             "email": "532508307@qq.com"
         }
     ],
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
-        }
-    },
-    "minimum-stability": "dev",
-    "require": {
-        "php": ">=7.0"
-    },
+    "require": {},
     "autoload": {
         "psr-4": {
             "Hcg\\Aes\\": "src/"
