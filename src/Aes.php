@@ -14,6 +14,7 @@ class Aes
 {
     protected $key;
     protected $iv;
+    protected $method = 'aes-256-cbc';
 
     public function __construct($config = [])
     {
@@ -21,19 +22,30 @@ class Aes
             $this->$k = $v;
         }
         if(empty($this->iv)){
-
+            $this->setIv(base64_encode(openssl_random_pseudo_bytes(16)));
         }
     }
 
+    public function setIv($iv): Aes
+    {
+        $this->iv = $iv;
+        return $this;
+    }
+
+    public function getIv(){
+        return $this->iv;
+    }
+
     // 加密
-    public function encrypt($data){
-       return openssl_encrypt($data, 'aes-256-cbc', base64_decode($this->key), OPENSSL_RAW_DATA, base64_decode($this->iv));
+    public function encrypt($data)
+    {
+        return openssl_encrypt($data, $this->method, base64_decode($this->key), OPENSSL_RAW_DATA, base64_decode($this->iv));
     }
 
     // 解密
-    public function decrypt($data){
-        return openssl_decrypt($data, 'aes-256-cbc', base64_decode($this->key), OPENSSL_RAW_DATA, base64_decode($this->iv));
+    public function decrypt($data)
+    {
+        return openssl_decrypt($data, $this->method, base64_decode($this->key), OPENSSL_RAW_DATA, base64_decode($this->iv));
     }
-
 
 }
